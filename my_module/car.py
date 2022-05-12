@@ -2,18 +2,17 @@ from my_module.engine import Engine
 
 
 class Car:
-    def __init__(self, make, model, year):
-        self.make = make
-        self.model = model
-        self.year = year
+    def __init__(self):
+        self.mileage = 0
         self.engine = Engine()
-        self.distance = 0
 
-    def move_distance(self, distance):
-        if self.is_engine_working():
+    def start(self):
+        self.engine.start_engine()
+
+    def move(self, distance):
+        if self.engine.is_enabled():
             print(f"the car is moving ${distance} meters")
-            self.distance += distance
-        return self.distance
-
-    def is_engine_working(self):
-        return self.engine.start_engine()
+            self.mileage += distance
+            return True
+        else:
+            return False

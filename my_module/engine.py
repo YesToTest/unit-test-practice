@@ -1,11 +1,9 @@
 class Engine:
     def __init__(self):
-        self.enabled = None
-
-    def set_enable(self, enabled):
-        self.enabled = enabled
+        self.__enabled = False
 
     def start_engine(self):
-        if self.enabled:
-            print("Run runnnn the engine is working")
-            return True
+        self.__enabled = True
+
+    def is_enabled(self):
+        return self.__enabled
