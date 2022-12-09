@@ -8,15 +8,14 @@ def fake_is_enabled(self):
     return True
 
 
-class PatchDecoratorTestCase(unittest.TestCase):
-    @patch("my_module.engine.Engine.is_enabled", fake_is_enabled)
-    def test_move_cart_is_working_successfully(self):
-        # arrange
-        car = Car()
+@patch("my_module.engine.Engine.is_enabled", fake_is_enabled)
+def test_move_cart_is_working_successfully():
+    # arrange
+    car = Car()
 
-        # act
-        response = car.move(20)
+    # act
+    response = car.move(20)
 
-        # assert
-        self.assertEqual(response, True)
-        self.assertEqual(car.mileage, 20)
+    # assert
+    assert response==True
+    assert car.mileage==20
